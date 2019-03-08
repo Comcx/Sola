@@ -1,2 +1,2 @@
 # Sola
-...
+Micro computing model
