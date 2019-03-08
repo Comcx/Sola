@@ -2,6 +2,7 @@ package sola
 
 
 import Sola._
+import scala.io.StdIn
 
 class Repl {
 
@@ -11,10 +12,10 @@ class Repl {
     evaluator.eval(reader.read(s), env)
 
   def repl(env: Env = evaluator.env0): Unit = {
-    println("Sola REPL environment >>")
+    println("REPL environment >>")
     def loop(env: Env = evaluator.env0): Unit = {
       print("sola> ")
-      val src = readLine()
+      val src = StdIn.readLine()
       if(src == "(quit)") println("Bye bye.")
       else {
         val exp = reader.read(src)

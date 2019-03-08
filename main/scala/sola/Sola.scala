@@ -3,7 +3,7 @@ package sola
 
 object Sola {
 
-  val version = "v0.1.0"
+  val version = "v0.1.1"
   type Env = List[(SExpr, SExpr)]
 
   trait SExpr

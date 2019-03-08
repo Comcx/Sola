@@ -1,10 +1,10 @@
 package sola
 
-import Sola._
 
 object Main extends App {
 
+  println("Sola Micro Computing Model")
+  println("Version " + Sola.version)
   val sola = new Repl
-  val rd = new Reader
   sola.repl()
 }
