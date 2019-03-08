@@ -6,8 +6,8 @@ import scala.util.parsing.combinator.RegexParsers
 
 class Reader extends RegexParsers {
 
-  def symbol: Parser[SExpr] = "[a-zA-Z0-9~!=-@#$+%^&*_:\";/,|\\_]+".r ^^ Var
-  def quote:  Parser[SExpr] = ("'" ~> expr) ^^ {x => L(List(Var("'"), x))}
+  def symbol: Parser[SExpr] = "[a-zA-Z0-9~\\[\\]!=-@#$+%^&*_:\";/,|\\_]+".r ^^ Var
+  def quote:  Parser[SExpr] = ("'" ~> expr) ^^ (x => L(List(Var("'"), x)))
   def list:   Parser[SExpr] = ("(" ~> rep(expr) <~ ")") ^^ L
 
   def expr: Parser[SExpr] = symbol | quote | list

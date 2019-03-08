@@ -16,12 +16,18 @@ object Sola {
     case Closure(_, _, _) => "<Closure>"
     case Void             => ""
     case Var(s)           => s
+    case L(Nil)           => "[]"
     case L(xs)            => "(" + xs.foldLeft("")((a, e) =>
       a + " " + show(e)).tail + ")"
   }
 
   def error(msg: String, info: SExpr) =
     L(List(Var("Error:"), Var(msg), info))
+
+  def isDecl(e: SExpr): Boolean = e match {
+    case L(List(Var("="), Var(s), v)) => true
+    case _ => false
+  }
 
 }// end object Nano
 
